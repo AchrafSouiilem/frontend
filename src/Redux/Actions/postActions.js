@@ -8,7 +8,7 @@ import {
 import axios from "axios";
 
 import dotenv from "dotenv";
-dotenv.config({path: false});
+dotenv.config({path: "../../.env"})
 
 export const loadPosts = () => {
   return { type: GET_POSTS_LOAD };
