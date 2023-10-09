@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFeedPost, deletePost } from "../../Redux/Actions/postActions";
 import FriendList from "./FriendList";
 
+const baseURL = "https://backend-pi-gilt.vercel.app"
+
 const TestPost = ({ post, isProfile }) => {
   /* POST DISTRUCTURING */
   const {
@@ -70,7 +72,7 @@ const TestPost = ({ post, isProfile }) => {
           component="img"
           width="auto"
           height="350px"
-          src={`http://localhost:5001/assets/${picturePath.path}`}
+          src={`${baseURL}/assets/${picturePath.path}`}
           alt="Picture"
         />
         <CardActions

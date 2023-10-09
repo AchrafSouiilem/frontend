@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 
+const baseURL = "https://backend-pi-gilt.vercel.app"
+
 const UserImage = ({ image , size = "55px" }) => {
   return (
     <Box width={size} height={size}>
@@ -8,7 +10,7 @@ const UserImage = ({ image , size = "55px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:5001/assets/${image}`}
+        src={`${baseURL}/assets/${image}`}
         />
     </Box>
   );

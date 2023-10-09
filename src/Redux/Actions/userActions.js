@@ -5,8 +5,7 @@ import {
   ADD_USER_FRIENDS,
 } from "../constants/ActionTypes";
 
-import dotenv from "dotenv";
-dotenv.config({path: "../../.env"})
+const baseURL = "https://backend-pi-gilt.vercel.app"
 
 export const friendsLoading = () => (dispatch) => {
   dispatch({ type: FRIENDS_LOAD });
@@ -20,7 +19,7 @@ export const getUserFriends = (id) => async (dispatch) => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await axios.get(`${process.env.baseURL}/API/users/${id}/friends`, config);
+    const res = await axios.get(`${baseURL}/API/users/${id}/friends`, config);
     dispatch({ type: GET_USER_FRIENDS, payload: res.data.friends });
   } catch (error) {
     console.log(error);
@@ -34,7 +33,7 @@ export const addFriends = (id, friendId) => async (dispatch) => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await axios.patch(`${process.env.baseURL}/API/users/${id}/${friendId}`, config);
+    const res = await axios.patch(`${baseURL}/API/users/${id}/${friendId}`, config);
     dispatch({ type: ADD_USER_FRIENDS, payload: res.data.friends });
   } catch (error) {
     console.log(error);
@@ -48,7 +47,7 @@ export const deleteFriend = (id, friendId) => async (dispatch) => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await axios.patch(`${process.env.baseURL}/API/users/${id}/${friendId}/remove`, config);
+    const res = await axios.patch(`${baseURL}/API/users/${id}/${friendId}/remove`, config);
     dispatch({ type: ADD_USER_FRIENDS, payload: res.data.friends });
   } catch (error) {
     console.log(error);

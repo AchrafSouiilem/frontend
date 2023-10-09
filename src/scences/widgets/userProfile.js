@@ -25,6 +25,8 @@ import { useState } from "react";
 import Dropzone from "react-dropzone";
 import { editProfile } from "../../Redux/Actions/authActions.js";
 
+const baseURL = "https://backend-pi-gilt.vercel.app"
+
 const UserProfile = ({ userImage, isProfile = false }) => {
   const user = useSelector((state) => state.authReducer.user);
   const friend = useSelector((state) => state.userReducer.user);
@@ -299,7 +301,7 @@ const UserProfile = ({ userImage, isProfile = false }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
+            <img src={`${baseURL}/assets/twitter.png`} alt="twitter" />
             <Box>
               <Typography color="#c2c2c2" fontWeight="500">
                 Twitter
@@ -312,7 +314,7 @@ const UserProfile = ({ userImage, isProfile = false }) => {
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
+            <img src={`${baseURL}/assets/linkedin.png`} alt="linkedin" />
             <Box>
               <Typography color="#c2c2c2" fontWeight="500">
                 Linkedin

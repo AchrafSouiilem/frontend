@@ -8,8 +8,8 @@ import {
 } from "../constants/ActionTypes";
 import axios from "axios";
 import { toast } from "react-toastify";
-import dotenv from "dotenv";
-dotenv.config({path: "../../.env"})
+
+const baseURL = "https://backend-pi-gilt.vercel.app"
 
 export const userLoading = () => (dispatch) => {
   dispatch({ type: USER_LOADING });
@@ -32,7 +32,7 @@ const toastOptions = {
 export const registerUser = (formData, navigate) => async (dispatch) => {
   dispatch(userLoading());
   try {
-    const res = await axios.post(`${process.env.baseURL}/API/auth/register`, formData);
+    const res = await axios.post(`${baseURL}/API/auth/register`, formData);
     if (res) {
       toast.success(res.data.msg, toastOptions);
     }
@@ -52,7 +52,7 @@ export const registerUser = (formData, navigate) => async (dispatch) => {
 export const loginUser = (formData, navigate) => async (dispatch) => {
   dispatch(userLoading());
   try {
-    const res = await axios.post(`${process.env.baseURL}/API/auth/login`, formData);
+    const res = await axios.post(`${baseURL}/API/auth/login`, formData);
     if (res) {
       toast.success(res.data.msg, toastOptions);
     }
@@ -87,7 +87,7 @@ export const getUser = (navigate) => async (dispatch) => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await axios.get(`${process.env.baseURL}/API/auth/`, config);
+    const res = await axios.get(`${baseURL}/API/auth/`, config);
     dispatch({
       type: GET_USER,
       payload: res.data.response,
@@ -105,7 +105,7 @@ export const editProfile = (id, edit) => async (dispatch) => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await axios.put(`${process.env.baseURL}/API/auth/${id}`, edit, config)
+    const res = await axios.put(`${baseURL}/API/auth/${id}`, edit, config)
     dispatch({ type: EDIT_PROFILE, payload: res.data.update})
     dispatch(getUser())
   } catch (error) {
