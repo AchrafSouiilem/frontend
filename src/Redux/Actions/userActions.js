@@ -6,7 +6,7 @@ import {
 } from "../constants/ActionTypes";
 
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({path: false});
 
 export const friendsLoading = () => (dispatch) => {
   dispatch({ type: FRIENDS_LOAD });

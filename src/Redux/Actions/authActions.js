@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({path: false});
 
 export const userLoading = () => (dispatch) => {
   dispatch({ type: USER_LOADING });
