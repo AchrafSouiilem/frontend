@@ -3,15 +3,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
-import {
-  Box,
-  //IconButton,
-  //Typography,
-  useMediaQuery,
-} from "@mui/material";
-// import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
-// import { FlexBetween } from "../../components/Flex";
-// import Dropzone from "react-dropzone";
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
+import { FlexBetween } from "../../components/Flex";
+import Dropzone from "react-dropzone";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -112,7 +107,7 @@ const Register = () => {
             borderRadius="5px"
             p="1rem"
           >
-            {/* <Box>
+            <Box>
               <Dropzone
                 acceptedFiles=".jpg,.jpeg,.png"
                 multiple={false}
@@ -154,15 +149,7 @@ const Register = () => {
                   </FlexBetween>
                 )}
               </Dropzone>
-            </Box> */}
-            <form
-              method="POST"
-              action="/API/auth/register"
-              encType="multipart/form-data"
-            >
-              <input type="file" name="image" />
-              <input type="submit" />
-            </form>
+            </Box>
           </Box>
           <div className="links">
             {isMobileScreens ? (
