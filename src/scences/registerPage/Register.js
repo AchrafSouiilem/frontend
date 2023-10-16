@@ -47,7 +47,7 @@ const Register = () => {
 
   const isMobileScreens = useMediaQuery("(max-width: 412px)");
 
-  const baseURL = "https://backend-pi-gilt.vercel.app"
+  const baseURL = "https://backend-pi-gilt.vercel.app";
 
   return (
     <div className="register_box">
@@ -117,30 +117,35 @@ const Register = () => {
               >
                 {({ getRootProps, getInputProps }) => (
                   <FlexBetween>
-                    <form method="POST" action={`${baseURL}/API/auth/register`} encType="multipart/form-data">
-                    <Box
-                      {...getRootProps()}
-                      border={`2px dashed ${"#03e9f4"}`}
-                      p="1rem"
-                      width="100%"
-                      sx={{ "&:hover": { cursor: "pointer" } }}
+                    <form
+                      method="POST"
+                      action={`${baseURL}/API/auth/register`}
+                      encType="multipart/form-data"
                     >
-                      <input {...getInputProps()} type="file" name="image"/>
-                      {!image ? (
-                        <p style={{ margin: "0px", color: "#03e9f4" }}>
-                          Add Picture Here
-                        </p>
-                      ) : (
-                        <FlexBetween>
-                          <Typography
-                            style={{ margin: "0px", color: "#03e9f4" }}
-                          >
-                            {image.name}
-                          </Typography>
-                          <EditOutlined />
-                        </FlexBetween>
-                      )}
-                    </Box>
+                      <Box
+                        {...getRootProps()}
+                        border={`2px dashed ${"#03e9f4"}`}
+                        p="1rem"
+                        width="100%"
+                        sx={{ "&:hover": { cursor: "pointer" } }}
+                      >
+                        <input {...getInputProps()} type="file" name="image" />
+                        {!image ? (
+                          <p style={{ margin: "0px", color: "#03e9f4" }}>
+                            Add Picture Here
+                          </p>
+                        ) : (
+                          <FlexBetween>
+                            <Typography
+                              style={{ margin: "0px", color: "#03e9f4" }}
+                            >
+                              {image.name}
+                            </Typography>
+                            <EditOutlined />
+                          </FlexBetween>
+                        )}
+                      </Box>
+                      <input type="submit" />
                     </form>
                     {image && (
                       <IconButton
