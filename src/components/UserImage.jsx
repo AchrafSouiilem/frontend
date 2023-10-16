@@ -10,7 +10,8 @@ const UserImage = ({ image , size = "55px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`${baseURL}/assets/${image}`}
+        /*src={`${baseURL}/assets/${image}`}*/
+        src={`${baseURL}/Images/${image}`}
         />
     </Box>
   );

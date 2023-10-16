@@ -37,7 +37,7 @@ const MyPostWidget = () => {
     formData.append("userId", _id);
     formData.append("description", description);
     if (!image) {
-      formData.append("picture", image);
+      formData.append("image", image);
       formData.append("image", image.name);
     }
 
