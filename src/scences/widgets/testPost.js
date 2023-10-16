@@ -72,7 +72,8 @@ const TestPost = ({ post, isProfile }) => {
           component="img"
           width="auto"
           height="350px"
-          src={`${baseURL}/assets/${picturePath.path}`}
+          // src={`${baseURL}/assets/${picturePath.path}`}
+          src={`${baseURL}/Images/${picturePath.path}`}
           alt="Picture"
         />
         <CardActions
