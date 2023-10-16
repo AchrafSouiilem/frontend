@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
-import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
-// import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
-// import { FlexBetween } from "../../components/Flex";
-// import Dropzone from "react-dropzone";
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
+import { FlexBetween } from "../../components/Flex";
+import Dropzone from "react-dropzone";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -109,7 +109,7 @@ const Register = () => {
             borderRadius="5px"
             p="1rem"
           >
-            {/* <Box>
+            <Box>
               <Dropzone
                 acceptedFiles=".jpg,.jpeg,.png"
                 multiple={false}
@@ -117,6 +117,7 @@ const Register = () => {
               >
                 {({ getRootProps, getInputProps }) => (
                   <FlexBetween>
+                    <form method="POST" action={`${baseURL}/API/auth/register`} encType="multipart/form-data">
                     <Box
                       {...getRootProps()}
                       border={`2px dashed ${"#03e9f4"}`}
@@ -124,7 +125,7 @@ const Register = () => {
                       width="100%"
                       sx={{ "&:hover": { cursor: "pointer" } }}
                     >
-                      <input {...getInputProps()} />
+                      <input {...getInputProps()} type="file" name="image"/>
                       {!image ? (
                         <p style={{ margin: "0px", color: "#03e9f4" }}>
                           Add Picture Here
@@ -140,6 +141,7 @@ const Register = () => {
                         </FlexBetween>
                       )}
                     </Box>
+                    </form>
                     {image && (
                       <IconButton
                         onClick={() => setImage("")}
@@ -151,10 +153,7 @@ const Register = () => {
                   </FlexBetween>
                 )}
               </Dropzone>
-            </Box> */}
-            <form method="POST" action={`${baseURL}/API/auth/register`} encType="multipart/form-data">
-              <input type="file" name="image" />
-            </form>
+            </Box>
           </Box>
           <div className="links">
             {isMobileScreens ? (
