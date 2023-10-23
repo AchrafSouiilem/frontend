@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
 import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
+import axios from "axios";
 //import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 //import { FlexBetween } from "../../components/Flex";
 //import Dropzone from "react-dropzone";
@@ -47,8 +48,12 @@ const Register = () => {
 
   const isMobileScreens = useMediaQuery("(max-width: 412px)");
 
-  //const baseURL = "https://backend-pi-gilt.vercel.app";
-
+  const baseURL = "https://backend-pi-gilt.vercel.app";
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("image", image);
+    axios.post(`${baseURL}/upload`, formData);
+  };
   return (
     <div className="register_box">
       <h2>REGISTER</h2>
@@ -102,22 +107,18 @@ const Register = () => {
             ></input>
             <label>Occupation</label>
           </div>
-
           <Box
             gridColumn={"1 / 3"}
             border={"1px solid #858585"}
             borderRadius="5px"
             p="1rem"
           >
-            <form>
-              <input type="file" name="image"/>
-              <input
-                type="submit"
-                style={{ gridColumn: "1 / 3" }}
-                className="size"
-                onClick={handleRegister}
-              />
-            </form>
+            <input
+              type="file"
+              name="image"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
           </Box>
           <div className="links">
             {isMobileScreens ? (
@@ -132,17 +133,20 @@ const Register = () => {
               </>
             )}
           </div>
-          {/* <Link
+          <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
-            onClick={handleRegister}
+            onClick={() => {
+              handleRegister();
+              handleUpload();
+            }}
           >
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             SUBMIT
-          </Link>  */}
+          </Link>
         </div>
       </form>
     </div>
