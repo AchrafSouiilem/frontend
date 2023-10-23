@@ -21,7 +21,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const formData = new FormData()
-    
+  formData.append("image", image)
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const Register = () => {
           lastName,
           email,
           password,
-          image : formData.append("image", image),
+          image,
           location,
           occupation,
         },
