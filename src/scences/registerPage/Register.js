@@ -20,6 +20,9 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const formData = new FormData()
+    
+
   const handleRegister = (e) => {
     e.preventDefault();
     dispatch(
@@ -29,15 +32,14 @@ const Register = () => {
           lastName,
           email,
           password,
-          image,
+          image : formData.append("image", image),
           location,
           occupation,
         },
         navigate
       )
     );
-    const formData = new FormData()
-    formData.append("image", image)
+
     setFirstName("");
     setLastName("");
     setEmail("");
