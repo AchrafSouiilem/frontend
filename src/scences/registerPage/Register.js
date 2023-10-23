@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
 import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
-import axios from "axios";
 //import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 //import { FlexBetween } from "../../components/Flex";
 //import Dropzone from "react-dropzone";
@@ -37,6 +36,8 @@ const Register = () => {
         navigate
       )
     );
+    const formData = new FormData()
+    formData.append("image", image)
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -48,12 +49,6 @@ const Register = () => {
 
   const isMobileScreens = useMediaQuery("(max-width: 412px)");
 
-  //const baseURL = "https://backend-pi-gilt.vercel.app";
-  const handleUpload = () => {
-    const formData = new FormData()
-    formData.append("image", image)
-    axios.post(`https://backend-pi-gilt.vercel.app/upload`, formData).then(res => console.log(res)).catch(err => console.log(err))
-  }
   return (
     <div className="register_box">
       <h2>REGISTER</h2>
@@ -118,7 +113,6 @@ const Register = () => {
               name="image"
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <button onClick={handleUpload}>Submit</button>
           </Box>
           <div className="links">
             {isMobileScreens ? (
