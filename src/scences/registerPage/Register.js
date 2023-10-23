@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
-import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
-import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
-import { FlexBetween } from "../../components/Flex";
-import Dropzone from "react-dropzone";
+import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
+//import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
+//import { FlexBetween } from "../../components/Flex";
+//import Dropzone from "react-dropzone";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -109,56 +109,21 @@ const Register = () => {
             borderRadius="5px"
             p="1rem"
           >
-            <Box>
-              <Dropzone
-                acceptedFiles=".jpg,.jpeg,.png"
-                multiple={false}
-                onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+            <form method="POST" action={`${baseURL}/auth/register`} encType="multipart/form-data">
+              <input type="file" name="image" onChange={(e) => setImage(e.target.value)} />
+              <input
+                type="submit"
+                style={{ gridColumn: "1 / 3" }}
+                className="size"
+                onClick={handleRegister}
               >
-                {({ getRootProps, getInputProps }) => (
-                  <FlexBetween>
-                    <form
-                      method="POST"
-                      action={`${baseURL}/API/auth/register`}
-                      encType="multipart/form-data"
-                    >
-                      <Box
-                        {...getRootProps()}
-                        border={`2px dashed ${"#03e9f4"}`}
-                        p="1rem"
-                        width="100%"
-                        sx={{ "&:hover": { cursor: "pointer" } }}
-                      >
-                        <input {...getInputProps()} type="file" name="image" />
-                        {!image ? (
-                          <p style={{ margin: "0px", color: "#03e9f4" }}>
-                            Add Picture Here
-                          </p>
-                        ) : (
-                          <FlexBetween>
-                            <Typography
-                              style={{ margin: "0px", color: "#03e9f4" }}
-                            >
-                              {image.name}
-                            </Typography>
-                            <EditOutlined />
-                          </FlexBetween>
-                        )}
-                      </Box>
-                      <input type="submit" />
-                    </form>
-                    {image && (
-                      <IconButton
-                        onClick={() => setImage("")}
-                        sx={{ width: "15%" }}
-                      >
-                        <DeleteOutlined />
-                      </IconButton>
-                    )}
-                  </FlexBetween>
-                )}
-              </Dropzone>
-            </Box>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                SUBMIT
+              </input>
+            </form>
           </Box>
           <div className="links">
             {isMobileScreens ? (
@@ -173,7 +138,7 @@ const Register = () => {
               </>
             )}
           </div>
-          <Link
+          {/* <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
             onClick={handleRegister}
@@ -183,7 +148,7 @@ const Register = () => {
             <span></span>
             <span></span>
             SUBMIT
-          </Link>
+          </Link> */}
         </div>
       </form>
     </div>
