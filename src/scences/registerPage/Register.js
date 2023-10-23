@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
-import { /*Box, IconButton, Typography,*/ useMediaQuery } from "@mui/material";
+import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
 //import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 //import { FlexBetween } from "../../components/Flex";
 //import Dropzone from "react-dropzone";
@@ -103,28 +103,22 @@ const Register = () => {
             <label>Occupation</label>
           </div>
 
-          {/* <Box
+          <Box
             gridColumn={"1 / 3"}
             border={"1px solid #858585"}
             borderRadius="5px"
             p="1rem"
           >
-            <form method="POST" action={`${baseURL}/auth/register`} encType="multipart/form-data">
-              <input type="file" name="image" onChange={(e) => setImage(e.target.value)} />
+            <form>
+              <input type="file" name="image"/>
               <input
                 type="submit"
                 style={{ gridColumn: "1 / 3" }}
                 className="size"
                 onClick={handleRegister}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                SUBMIT
-              </input>
+              />
             </form>
-          </Box> */}
+          </Box>
           <div className="links">
             {isMobileScreens ? (
               <>
@@ -138,7 +132,7 @@ const Register = () => {
               </>
             )}
           </div>
-          <Link
+          {/* <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
             onClick={handleRegister}
@@ -148,7 +142,7 @@ const Register = () => {
             <span></span>
             <span></span>
             SUBMIT
-          </Link> 
+          </Link>  */}
         </div>
       </form>
     </div>
