@@ -48,11 +48,11 @@ const Register = () => {
 
   const isMobileScreens = useMediaQuery("(max-width: 412px)");
 
-  const baseURL = "https://backend-pi-gilt.vercel.app";
+  //const baseURL = "https://backend-pi-gilt.vercel.app";
   const handleUpload = () => {
     const formData = new FormData()
     formData.append("image", image)
-    axios.post(`${baseURL}/upload`, formData).then(res => console.log(res)).catch(err => console.log(err))
+    axios.post(`https://backend-pi-gilt.vercel.app/upload`, formData).then(res => console.log(res)).catch(err => console.log(err))
   }
   return (
     <div className="register_box">
