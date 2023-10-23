@@ -138,7 +138,7 @@ const Register = () => {
             className="size"
             onClick={() => {
               handleRegister();
-              handleUpload();
+              // handleUpload();
             }}
           >
             <span></span>
