@@ -136,10 +136,11 @@ const Register = () => {
           <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
-            onClick={() => {
-              handleRegister();
-              // handleUpload();
-            }}
+            // onClick={() => {
+            //   handleRegister();
+            //   handleUpload();
+            // }}
+            onClick={handleRegister}
           >
             <span></span>
             <span></span>
