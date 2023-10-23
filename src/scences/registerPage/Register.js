@@ -50,10 +50,10 @@ const Register = () => {
 
   const baseURL = "https://backend-pi-gilt.vercel.app";
   const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("image", image);
-    axios.post(`${baseURL}/upload`, formData);
-  };
+    const formData = new FormData()
+    formData.append("image", image)
+    axios.post(`${baseURL}/upload`, formData).then(res => console.log(res)).catch(err => console.log(err))
+  }
   return (
     <div className="register_box">
       <h2>REGISTER</h2>
@@ -116,10 +116,9 @@ const Register = () => {
             <input
               type="file"
               name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              onChange={(e) => setImage(e.target.files[0])}
             />
-            <button onClick={handleUpload}>Send Image</button>
+            <button onClick={handleUpload}>Submit</button>
           </Box>
           <div className="links">
             {isMobileScreens ? (
