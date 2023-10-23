@@ -119,6 +119,7 @@ const Register = () => {
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
+            <button onClick={handleUpload}>Send Image</button>
           </Box>
           <div className="links">
             {isMobileScreens ? (
@@ -136,11 +137,7 @@ const Register = () => {
           <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
-            onClick={() => {
-              handleRegister();
-              handleUpload();
-            }}
-            // onClick={handleRegister}
+            onClick={handleRegister}
           >
             <span></span>
             <span></span>
