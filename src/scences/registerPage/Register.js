@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Redux/Actions/authActions";
 import { Box, /*IconButton, Typography,*/ useMediaQuery } from "@mui/material";
+import axios from "axios";
 //import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 //import { FlexBetween } from "../../components/Flex";
 //import Dropzone from "react-dropzone";
@@ -20,8 +21,15 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const formData = new FormData()
-  formData.append("image", image)
+  const handleUpload = () => {
+    const baseURL = "https://backend-pi-gilt.vercel.app";
+    const formData = new FormData();
+    formData.append("image", image);
+    axios
+      .post(`${baseURL}/API/upload`, formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -132,7 +140,10 @@ const Register = () => {
           <Link
             style={{ gridColumn: "1 / 3" }}
             className="size"
-            onClick={handleRegister}
+            onClick={() => {
+              handleUpload();
+              handleRegister();
+            }}
           >
             <span></span>
             <span></span>
